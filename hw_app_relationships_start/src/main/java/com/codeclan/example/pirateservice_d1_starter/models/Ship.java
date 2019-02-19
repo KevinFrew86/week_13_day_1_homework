@@ -1,5 +1,7 @@
 package com.codeclan.example.pirateservice_d1_starter.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +20,17 @@ public class Ship {
 //    @Column(name = "Pirate_List")
 //    private ArrayList<Pirate> pirates;
 
+    @JsonIgnore
     @OneToMany(mappedBy="ship")
     private List<Pirate> pirates;
 
-    public Ship(String name, ArrayList<Pirate> pirates) {
+    public Ship(String name) {
         this.name = name;
         this.pirates = new ArrayList<Pirate>();
+    }
+
+    public Ship() {
+
     }
 
     public Long getId() {

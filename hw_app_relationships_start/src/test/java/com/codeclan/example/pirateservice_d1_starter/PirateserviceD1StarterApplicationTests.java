@@ -17,6 +17,8 @@ public class PirateserviceD1StarterApplicationTests {
 
 	@Autowired
 	PirateRepository pirateRepository;
+
+	@Autowired
 	ShipRepository shipRepository;
 
 	@Test
@@ -25,17 +27,12 @@ public class PirateserviceD1StarterApplicationTests {
 
 	@Test
 	public void createSinglePirateAndSave(){
-		Pirate pirate = new Pirate("Jack", "Sparrow", 32);
-		pirateRepository.save(pirate);
-	}
-
-	@Test
-	public void createPirateAndShip(){
 		Ship ship = new Ship("The Flyin Dutchman");
 		shipRepository.save(ship);
 
-		Pirate pirate1 = new Pirate("Jack", "Sparrow", 32, ship);
-		pirateRepository.save(pirate1);
+		Pirate pirate = new Pirate("Jack", "Sparrow", 32, ship);
+		pirateRepository.save(pirate);
 	}
+
 
 }
