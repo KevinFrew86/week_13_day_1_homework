@@ -1,7 +1,10 @@
 package com.codeclan.example.pirateservice_d1_starter;
 
 import com.codeclan.example.pirateservice_d1_starter.models.Pirate;
+import com.codeclan.example.pirateservice_d1_starter.models.Ship;
 import com.codeclan.example.pirateservice_d1_starter.repositories.PirateRepository;
+import com.codeclan.example.pirateservice_d1_starter.repositories.ShipRepository;
+import javafx.scene.canvas.GraphicsContext;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ public class PirateserviceD1StarterApplicationTests {
 
 	@Autowired
 	PirateRepository pirateRepository;
+	ShipRepository shipRepository;
 
 	@Test
 	public void contextLoads() {
@@ -23,6 +27,15 @@ public class PirateserviceD1StarterApplicationTests {
 	public void createSinglePirateAndSave(){
 		Pirate pirate = new Pirate("Jack", "Sparrow", 32);
 		pirateRepository.save(pirate);
+	}
+
+	@Test
+	public void createPirateAndShip(){
+		Ship ship = new Ship("The Flyin Dutchman");
+		shipRepository.save(ship);
+
+		Pirate pirate1 = new Pirate("Jack", "Sparrow", 32, ship);
+		pirateRepository.save(pirate1);
 	}
 
 }
